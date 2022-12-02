@@ -1,0 +1,105 @@
+{% extends 'seller_base.html' %}
+
+{% block seller_home_page %}
+<br>
+<br>
+<div class="container">
+
+  <strong>{{seller_name}}</strong>
+  <br>
+  <br> 
+  <div class="row">
+    <div class="col-12">
+      <div class="card mb-3">
+        <img style="height:200px" src="{{seller_name.seller_image.url}}" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">{{seller_name}}</h5>
+          <p class="card-text">{{seller_name.shop_description}} </p>
+          <p class="card-text">{{seller_name.seller_image.url}}</p>
+        </div>
+      </div> 
+    </div> 
+    {% for item in seller_product_id %}
+    <div class="col-6">
+        <div class="card" style="width: 18rem;">
+          <img style="height:200px" src="{{item.product_image.url}}" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">{{item.product_name}}</h5>
+            <p class="card-text">{{item.product_description}}</p>
+            <p class="card-text">{{item.product_price}}</p>
+            <p class="card-text">{{item.id}}</p>
+            <p class="card-text">{{item.product_image.url}}</p>
+    {% if user == 'costomer' %}
+            <form action="{% url 'buy_orders' item.id %}" method="POST">
+              {% csrf_token %}
+              <button type="submit" class="btn btn-dark">buy</button>
+            </form>
+      {% endif %}
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+  </div>
+
+  {% if user != 'costomer' %}
+    <!-- Button trigger modal -->
+    
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+      Add items
+    </button> 
+    
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Add items </h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+           
+          <div class="modal-body">
+            <form action="{% url 'home_page_seller' seller_name.id %}" method="POST" enctype="multipart/form-data"> 
+            
+              <div class="mb-3">
+                <label for="product_name" class="form-label">product_name</label>
+                <input type="text" class="form-control" id="product_name" name="product_name"
+                  placeholder="product_name">
+              </div>
+              <div class="mb-3">
+                <label for="product_price" class="form-label">product_price</label>
+                <input type="number" class="form-control" id="product_price" name="product_price"
+                  placeholder="product_price">
+              </div>
+              <div class="mb-3">
+                <label for="product_description" class="form-label">product_description</label>
+                <input type="text" class="form-control" id="product_description" name="product_description"
+                  placeholder="product_description">
+              </div>
+              <div class="mb-3">
+                <label for="shop_name">shop_name</label>
+                <select class="form-control" id="shop_name" name="shop_name">
+                  <option>{{seller_name}}</option>
+                </select>
+              </div>
+              <div class="mb-3">
+                <label for="product_image" class="form-label">product_image</label>
+                <input type="file" class="form-control" id="product_image" name="product_image"
+                  placeholder="product_image">
+              </div>
+              {% csrf_token %}
+              <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">Save changes</button>  
+              </div>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+{% endif %}
+  <br><br><br><br><br>
+</div>
+
+{% endblock seller_home_page %}

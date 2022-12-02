@@ -1,0 +1,30 @@
+{% extends 'seller_base.html' %}
+
+{% block add_items %}
+ 
+<div class="container">
+    <div class="row">
+        <form action="seller_home_page" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+            <div class="mb-3">
+                <label for="items" class="form-label">item name</label>
+                <input type="text" class="form-control" id="items" name="items" placeholder="item name">
+              </div>
+              <div class="mb-3">
+                <label for="items_description" class="form-label">Description</label>
+                <textarea class="form-control" id="items_description" name="items_description" rows="3"></textarea>
+              </div>
+              <div class="form-group">
+                <label for="product_image">image </label>
+                <input type="file" class="form-control-file" id="product_image" name="product_image">
+              </div>
+              <div class="mb-3">
+                <label for="item_price" class="form-label">Price</label>
+                <input type="number" class="form-control" id="item_price" name="item_price" placeholder="Price">
+              </div>
+              <button type="submit" class="btn btn-dark">Submit</button>
+        </form>
+    </div>
+</div> 
+
+{% endblock add_items %}

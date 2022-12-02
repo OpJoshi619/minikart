@@ -1,0 +1,51 @@
+{% extends 'seller_base.html' %}
+
+{% block buy_orders %}
+
+<div class="container"> 
+    <div class="row">
+        <form action="place_order" method="POST">
+        <div class="col-12">
+            <div class="mb-3">
+                <label for="product_name" class="form-label">product_name </label>
+                <input type="text" class="form-control" value="{{product.product_name}}" id="product_name" name= "product_name" placeholder="{{product.product_name}}" disable>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="mb-3">
+                <label for="shop_name" class="form-label">shop_name </label>
+                <input type="text" class="form-control" value="{{product.shop_name}}" id="shop_name" name="shop_name" placeholder="{{product.shop_name}}" disable >
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="mb-3">
+                <label for="product_description" class="form-label">product_description </label>
+                <input type="text" class="form-control" value="{{product.product_description}}" id="product_description" name="product_description" placeholder="{{product.product_description}}" disable>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="mb-3">
+                <label for="user_name" class="form-label">user_name </label>
+                <input type="text" class="form-control" value="{{costomer_data.full_name}}" id="user_name" name="user_name" placeholder="{{costomer_data.full_name}}" disable>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="mb-3">
+                <label for="user_phone_number" class="form-label">user_phone_number </label>
+                <input type="text" class="form-control" value="{{costomer_data.phone_number}}" id="user_phone_number" name="user_phone_number" placeholder="{{costomer_data.phone_number}}" disable>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="mb-3">
+                <label for="delivery_address" class="form-label">delivery_address</label>
+                <input type="text" class="form-control" value="{{costomer_data.address}}" id="delivery_address" name="delivery_address" placeholder="{{costomer_data.address}}">
+            </div>
+        </div>
+         {% csrf_token %}
+        <button type="submit" class="btn btn-dark">place_order</button>
+    </form>
+    </div>
+    <br><br><br><br><br>
+</div>
+
+{% endblock buy_orders %}

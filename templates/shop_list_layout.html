@@ -1,0 +1,73 @@
+{% extends 'costomer_base.html' %}
+{% load static %}
+
+{% block active_shop_page %} active {% endblock active_shop_page %}
+
+{% block shop_list_layout %}
+<br>
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="col-md-6">
+                <!-- input of state -->
+                <form action="input_state" method="GET">
+                    <select name="input_state" id="input_state">
+                        <option>select state</option>
+                        {% for state in all_state %}
+                        <option>{{state}}</option>
+                        {% endfor %}
+                    </select>
+                    <button type="submit" class="btn btn-dark">Submit</button>
+                </form>
+                <!-- city and category -->
+                <form action="show_shop" method="GET">
+                    <select name="input_city" id="input_city">
+                        <option>select city</option>
+                        {% for city in all_city %}
+                        <option>{{city}}</option>
+                        {% endfor %}
+                    </select>
+                    <select name="input_category" id="input_category">
+                        <option>select shop category</option>
+                        <option>Grocery</option>
+                        <option>Cloth</option>
+                        <option>Stationery</option>
+                        <option>Bakery</option>
+                    </select>
+                    <button type="submit" class="btn btn-dark">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <br> 
+    <br>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                {% for shop in all_shops %}
+                <div class="card mb-3" style="max-width: 1000px;">
+                    <div class="row g-0">
+                        <div class="col-md-4" style="margin-bottom: 10px;">
+                            <img style="height:200px" src="{{shop.seller_image.url}}" alt="..."> 
+                        </div> 
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">{{shop.full_name}}</h5>
+                                <p class="card-text">{{shop.shop_description}}</p>
+                                <p class="card-text">{{shop.shop_category}}</p>
+                                <p class="card-text">{{shop.seller_image.url}}</p>
+                                <a href="{% url 'go_to_shop' shop.id %}" class="btn btn-primary">Go to shop</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div> 
+    <br><br><br>
+</div> 
+
+{% endblock shop_list_layout %}

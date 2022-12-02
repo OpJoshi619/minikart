@@ -1,0 +1,142 @@
+{% extends 'costomer_base.html' %} 
+{% load static %}
+{% block active_home_page %}active{% endblock active_home_page %}
+
+{% block home_page %}
+
+{% if success != NULL %}
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+  <strong>{{success}}</strong>
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endif %}
+
+<br>
+<br> 
+<!-- carosel start -->
+<div class="container-fluid">
+  <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+        aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+        aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+        aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="{%static 'change screen\3.jpg' %}" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="{%static 'change screen\2.jpg' %}" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="{%static 'change screen\1.jpg' %}" class="d-block w-100" alt="...">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+      data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+      data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+</div>
+<!-- carosel ends -->
+<br>
+<br>
+<!-- description od site start -->
+<div class="container">
+  <strong>Hello There! Welcome to our website.</strong> <br>
+
+  This is prototype website for online shoping. A place where you can purchase from your local stores as well as from
+  stores all across india.
+</div>
+<!-- description of site ends  -->
+<br>
+<br>
+<!-- search bars for shops and produscts  start -->
+<div class="container">
+  <h3>Looking For:-</h3>
+</div>
+<div class="container">
+  <div class="row d-flex justify-content-between">
+    <div class="col-md-6 col-sm-12">
+      <div style=" margin: 10px 10px 10px 10px">
+      {% comment %} same as below {% endcomment %}
+          <a href="grocery_shop_list_layout"><img src="{%static 'Shops cat\1.jpg' %}" class="card-img-top" alt="..."></a>
+      </div>
+    </div>
+ 
+    <div class="col-md-6 col-sm-12">
+      <div style=" margin:10px 10px 10px 10px">
+      {% comment %} same as below {% endcomment %}
+        <a href="stationery_shop_list_layout"><img href="#" src="{%static 'Shops cat\3.jpg' %}" class="card-img-top" alt="..."></a>
+      </div>
+    </div>
+
+    <div class="col-md-6 col-sm-12">
+      <div style=" margin:10px 10px 10px 10px">
+      {% comment %} same as below {% endcomment %}
+        <a href="cloth_shop_list_layout"><img href="#" src="{%static 'Shops cat\4.jpg' %}" class="card-img-top" alt="..."></a>
+      </div>
+    </div>
+
+    <div class="col-md-6 col-sm-12">
+      <div style="  margin:10px 10px 10px 10px ">
+      {% comment %} dynamic url use kar sakta hu {% endcomment %}
+        <a href="bakery_shop_list_layout"><img href="#" src="{%static 'Shops cat\5.jpg' %}" class="card-img-top" alt="..."></a>
+      </div>
+    </div>
+  </div>
+
+</div>
+<!-- search bars for shops and products ends -->
+
+<br>
+<br>
+<div class="container">
+  <div class="row d-flex justify-content-around">
+    <div class="card" style="width: 15rem; margin: 0px 10px 10px 10px">
+      <img src="{%static 'footer\happyy.jpg' %}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">happy costomer</h5>
+        <p class="card-text">Number of registered custmers</p>
+        <a class="btn btn-primary d-flex justify-content-center">1234567</a>
+      </div>
+    </div>
+    <div class="card" style="width: 15rem; 0px 10px 10px 10px">
+      <img src="{%static 'footer\shop logo.jpg' %}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">total Shops </h5>
+        <p class="card-text">Number of registered Shops</p>
+        <a class="btn btn-primary d-flex justify-content-center">12345</a>
+      </div>
+    </div>
+    <div class="card" style="width: 15rem; 0px 10px 10px 10px">
+      <img src="{%static 'footer\about us.jpg' %}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">about us </h5>
+        <p class="card-text">We are student of iit bhu</p>
+        <a href="aboutus_page" class="btn btn-primary d-flex justify-content-center">Read More..</a>
+      </div>
+    </div>
+    <div class="card" style="width: 15rem; 0px 10px 10px 10px">
+      <img src="{%static 'footer\seller.jpg' %}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">want to be a seller</h5>
+        <p class="card-text">If you want to Register your shop.</p>
+        <a href="seller/seller_registration_page" class="btn btn-primary d-flex justify-content-center">Click Here</a>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+<br>
+
+{% endblock home_page %}

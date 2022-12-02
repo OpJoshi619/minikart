@@ -1,0 +1,56 @@
+{% extends 'costomer_base.html' %}
+
+{% block costomer_profile %}   
+<br>
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="card mb-3" style="max-width: 5000px;">
+                <div class="row g-0">
+                  <div class="col-md-4">
+                    <img style="height:200px" src="{{costomer_data.costomer_img.url}}" alt="{{costomer_data.costomer_img}}">
+                  </div>
+                  <div class="col-md-8">
+                    <div class="card-body">
+                      <h5 class="card-title">{{costomer_data.full_name}}</h5>
+                      <p class="card-text">{{costomer_data.phone_number}}</p>
+                      <p class="card-text">{{costomer_data.address}}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+        </div>
+        <br>
+        <br>
+        <div class="col-12">
+            <p>Orders Placed</p>
+        </div>
+        <div class="col-12">
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Item name </th>
+                    <th scope="col">Date of purchase </th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Price</th>
+                  </tr>
+                </thead>
+                {% for order in all_orders %}
+                <tbody>
+                  <tr>
+                    <th scope="row">{{forloop.counter}}</th>
+                    <td>{{order.costomer_name}}</td>
+                    <td>{{order.delivery_address}}</td>
+                    <td>{{order.costomer_phone_number}}</td>
+                    <td>{{order.seller_name}}</td>
+                  </tr>
+                </tbody>
+                {% endfor %}
+              </table>
+        </div>
+    </div>
+</div>
+
+{% endblock costomer_profile %} 

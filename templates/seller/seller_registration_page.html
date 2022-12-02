@@ -1,0 +1,97 @@
+{% extends 'seller_base.html' %}
+
+{% block seller_registration_page %}
+
+<div class="container">
+    <div class="row">
+        <form action="seller_registration_page" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="full_fame">Full Name</label>
+                <input type="text" class="form-control" id="full_name" name="full_name" placeholder="Enter Your Name">
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email address</label>
+                <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp"
+                    placeholder="Enter email">
+            </div>
+ 
+            <div class="form-group">
+                <label for="phone_number">Contact Number</label>
+                <input type="text" class="form-control" id="phone_number" name="phone_number"
+                    placeholder="Enter Your Contact Number">
+            </div>
+            <br>
+            <div class="col-md-6">
+                <label for="state">State</label>
+                <select name="input_state" id="input_state">
+                    <option>select state</option>
+                    {% for state in all_state %}
+                    <option>{{state}}</option>
+                    {% endfor %}
+                </select>
+                <label for="city">City</label>
+                <select name="input_city" id="input_city">
+                    <option>select city</option>
+                    {% for city in all_city %}
+                    <option>{{city}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <br>
+            <div class="form-group">
+                <label for="zip" class="form-label">Zip</label>
+                <input type="text" class="form-control" id="zip" name="input_zip" required>
+            </div>
+
+            <div class="form-group">
+                <label for="shop_address">Shop's Address</label>
+                <input type="text" class="form-control" id="shop_address" name="shop_address"
+                    placeholder="Enter Shop's Address">
+            </div>
+
+            <div class="form-group">
+                <label for="shop_cat">Category</label>
+                <select class="form-control" id="shop_cat" name="shop_cat">
+                    <option>--Select Category--</option>
+                    <option>Grocery</option>
+                    <option>Bakery</option>
+                    <option>Clothes</option>
+                    <option>Stationery</option>
+                    <option>Other</option>
+                </select>
+            </div>
+
+
+            <div class="form-group">
+                <label for="image">Upload Shop Image</label><br>
+                <input type="file" class="form-control-file" id="seller_image" name="seller_image">
+            </div>
+
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" name="password"
+                    placeholder="Enter Your Password">
+            </div>
+
+            <div class="form-group">
+                <label for="confirm_password">Confirm Password</label>
+                <input type="password" class="form-control" id="confirm_password" name="confirm_password"
+                    placeholder="Confirm Your Password">
+            </div>
+
+            <div class="mb-3">
+                <label for="shop_description" class="form-label">describe your shop</label>
+                <textarea class="form-control" id="shop_description" name="shop_description" rows="3"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>
+<br>
+<br>
+<br>
+
+{% endblock seller_registration_page %}
